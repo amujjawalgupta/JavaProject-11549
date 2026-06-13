@@ -35,6 +35,7 @@ class Device {
 
 // Light Class
 class Light extends Device {
+
     public Light(String name) {
         super(name);
     }
@@ -50,6 +51,7 @@ class Light extends Device {
 
 // Fan Class
 class Fan extends Device {
+
     public Fan(String name) {
         super(name);
     }
@@ -73,7 +75,7 @@ public class SmartHomeMenu {
         Light light = new Light("Living Room Light");
         Fan fan = new Fan("Bedroom Fan");
 
-        int choice;
+        int choice = 0;
 
         do {
             System.out.println("\n========== SMART HOME ==========");
@@ -86,14 +88,15 @@ public class SmartHomeMenu {
             System.out.print("Enter Choice: ");
 
             if (!sc.hasNextInt()) {
-                System.out.println("Invalid Input! Enter a number.");
-                sc.next();
+                System.out.println("❌ Invalid Input! Please enter a number.");
+                sc.next(); // Clear invalid input
                 continue;
             }
 
             choice = sc.nextInt();
 
             switch (choice) {
+
                 case 1:
                     light.turnOn();
                     break;
@@ -117,11 +120,11 @@ public class SmartHomeMenu {
                     break;
 
                 case 6:
-                    System.out.println("Thank you for using Smart Home System.");
+                    System.out.println("✅ Thank you for using Smart Home System.");
                     break;
 
                 default:
-                    System.out.println("Invalid Choice!");
+                    System.out.println("❌ Invalid Choice! Please select 1-6.");
             }
 
         } while (choice != 6);
