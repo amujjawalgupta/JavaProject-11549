@@ -2,26 +2,18 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Stock Price Analyzer
- * Console application to analyse the daily closing price of a stock.
- * Concepts: Arrays/ArrayList, Sorting, Binary Search, Methods, File Handling.
- * Prices are stored in prices.txt. Day numbers start from 1 (order of entry).
- */
+
 public class StockPriceAnalyzer {
 
     private static final String FILE_NAME = "prices.txt";
     private static final double EPSILON = 1e-9;
 
-    // Original prices in order of entry: Day number = index + 1
+    
     private static ArrayList<Double> prices = new ArrayList<>();
-    // Sorted copy (ascending); the original order is never disturbed
+    
     private static ArrayList<Double> sortedPrices = new ArrayList<>();
 
-    // ------------------------------------------------------------------
-    // Input validation
-    // ------------------------------------------------------------------
-    /** Returns the parsed price, or -1 if the text is not a positive number. */
+    
     public static double parsePrice(String text) {
         try {
             double value = Double.parseDouble(text.trim());
@@ -34,9 +26,9 @@ public class StockPriceAnalyzer {
         }
     }
 
-    // ------------------------------------------------------------------
+   
     // Core features
-    // ------------------------------------------------------------------
+    
     public static void addPrice(Scanner sc) {
         System.out.print("Enter price: ");
         double price = parsePrice(sc.nextLine());
@@ -84,7 +76,7 @@ public class StockPriceAnalyzer {
         System.out.printf("Average: %.2f%n", average);
     }
 
-    /** Insertion sort on the sorted copy (ascending). */
+    
     public static void sortAscending() {
         sortedPrices = new ArrayList<>(prices);
         for (int i = 1; i < sortedPrices.size(); i++) {
@@ -112,10 +104,7 @@ public class StockPriceAnalyzer {
         System.out.println(sb);
     }
 
-    /**
-     * Iterative binary search written manually (no Arrays.binarySearch).
-     * Returns the 1-based position in the sorted list, or -1 if not found.
-     */
+    
     public static int binarySearch(ArrayList<Double> list, double target) {
         int low = 0, high = list.size() - 1;
         while (low <= high) {
@@ -152,9 +141,9 @@ public class StockPriceAnalyzer {
         }
     }
 
-    // ------------------------------------------------------------------
+
     // File handling
-    // ------------------------------------------------------------------
+ 
     public static void loadFromFile() {
         File file = new File(FILE_NAME);
         if (!file.exists()) {
@@ -183,9 +172,9 @@ public class StockPriceAnalyzer {
         }
     }
 
-    // ------------------------------------------------------------------
+
     // Menu
-    // ------------------------------------------------------------------
+
     public static void showMenu() {
         System.out.println();
         System.out.println("================================");
